@@ -67,6 +67,7 @@ public class GameOld implements IGame {
                                + "'s new location is "
                                + places[currentPlayer]);
             System.out.println("The category is " + currentCategory());
+            inPenaltyBox[currentPlayer] = false;
             askQuestion();
          } else {
             System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
@@ -112,10 +113,23 @@ public class GameOld implements IGame {
       return "Rock";
    }
 
+   @Override
+   public boolean handleAnswer(boolean correct) {
+      if(!inPenaltyBox[currentPlayer]) {
+         if (correct) {
+            return handleCorrectAnswer();
+         }
+         return wrongAnswer();
+      }
+      currentPlayer++;
+      if (currentPlayer == players.size()) currentPlayer = 0;
+      return true;
+   }
+
    public boolean handleCorrectAnswer() {
       if (inPenaltyBox[currentPlayer]) {
          if (isGettingOutOfPenaltyBox) {
-            System.out.println("Answer was corrent!!!!");
+            System.out.println("Answer was correct!!!!");
             purses[currentPlayer]++;
             System.out.println(players.get(currentPlayer)
                                + " now has "
@@ -135,7 +149,7 @@ public class GameOld implements IGame {
 
       } else {
 
-         System.out.println("Answer was corrent!!!!");
+         System.out.println("Answer was correct!!!!");
          purses[currentPlayer]++;
          System.out.println(players.get(currentPlayer)
                             + " now has "

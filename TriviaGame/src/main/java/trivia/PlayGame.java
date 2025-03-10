@@ -36,9 +36,9 @@ public class PlayGame {
          System.out.print(">> Was the answer correct? [y/n] ");
          boolean correct = readYesNo();
          if (correct) {
-            notAWinner = aGame.handleCorrectAnswer();
+            notAWinner = aGame.handleAnswer(true);
          } else {
-            notAWinner = aGame.wrongAnswer();
+            notAWinner = aGame.handleAnswer(false);
          }
 
       } while (notAWinner);
