@@ -256,6 +256,7 @@ public class Main {
                         continuer = scanner.nextLine().trim().equalsIgnoreCase("oui");
 
                         utilisateur = null;
+                        
                 }
             }
         }
