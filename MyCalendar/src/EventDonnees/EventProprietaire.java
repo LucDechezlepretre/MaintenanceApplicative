@@ -1,3 +1,5 @@
+package EventDonnees;
+
 public final class EventProprietaire {
     private String prop;
 

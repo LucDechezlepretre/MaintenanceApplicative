@@ -1,3 +1,7 @@
+package EventDonnees;
+
+import Events.Event;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,5 @@
+package EventDonnees;
+
 public final class EventLieu {
     private String lieu;
 

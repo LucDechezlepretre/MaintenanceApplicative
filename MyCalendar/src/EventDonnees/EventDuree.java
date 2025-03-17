@@ -1,3 +1,5 @@
+package EventDonnees;
+
 public final class EventDuree {
     private int duree;
 

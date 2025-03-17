@@ -1,3 +1,5 @@
+package EventDonnees;
+
 public final class EventTitle {
     private String title;
 

@@ -1,3 +1,5 @@
+package EventDonnees;
+
 public class Participant {
     private String nom;
 

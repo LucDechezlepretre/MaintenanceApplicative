@@ -1,3 +1,9 @@
+import EventDonnees.EventDate;
+import EventDonnees.EventParticipants;
+import EventDonnees.Participant;
+import Events.EventFactory;
+import Events.*;
+
 import java.time.LocalDateTime;
 import java.time.temporal.WeekFields;
 import java.util.List;
@@ -178,9 +184,8 @@ public class Main {
                         System.out.print("Durée (en minutes) : ");
                         int duree = Integer.parseInt(scanner.nextLine());
 
-                        calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
-                               annee, moisRdv, jourRdv, heure, minute, duree,
-                                "", new EventParticipants(), 0);
+                        calendar.ajouterEvent(EventFactory.createRdv(titre, utilisateur,
+                               annee, moisRdv, jourRdv, heure, minute, duree));
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -217,8 +222,8 @@ public class Main {
 
                         }
 
-                        calendar.ajouterEvent("REUNION", titre2, utilisateur, annee2, moisRdv2, jourRdv2, heure2, minute2, duree2,
-                                lieu, participants, 0);
+                        calendar.ajouterEvent(EventFactory.createReunion(titre2, utilisateur, annee2, moisRdv2, jourRdv2, heure2, minute2, duree2,
+                                lieu, participants));
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -240,8 +245,8 @@ public class Main {
                         System.out.print("Frequence (en jours) : ");
                         int frequence = Integer.parseInt(scanner.nextLine());
 
-                        calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur, annee3, moisRdv3, jourRdv3, heure3, minute3, 0,
-                                "", new EventParticipants(), frequence);
+                        calendar.ajouterEvent(EventFactory.createPeriodique(titre3, utilisateur, annee3, moisRdv3, jourRdv3, heure3, minute3, 0,
+                                frequence));
 
                         System.out.println("Événement ajouté.");
                         break;

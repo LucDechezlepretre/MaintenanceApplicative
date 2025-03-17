@@ -1,5 +1,8 @@
-import java.time.LocalDateTime;
-
+import EventDonnees.Evements;
+import EventDonnees.EventDate;
+import Events.EventPeriodique;
+import EventDonnees.*;
+import Events.*;
 public class CalendarManager {
     public Evements events;
 
@@ -7,23 +10,21 @@ public class CalendarManager {
         this.events = new Evements();
     }
 
-    public void ajouterEvent(String type, String title, String proprietaire, int annee, int mois, int jour, int heure, int minute, int dureeMinutes,
-                             String lieu, EventParticipants participants, int frequenceJours) {
-        Event e = new Event(type, title, proprietaire, annee, mois, jour, heure, minute, dureeMinutes, lieu, participants, frequenceJours);
+    public void ajouterEvent(Event e) {
         events.ajouter(e);
     }
 
     public Evements eventsDansPeriode(EventDate debut, EventDate fin) {
         Evements result = new Evements();
         for (Event e : events.getEventsList()) {
-            if (e.type.equals("PERIODIQUE")) {
+            if (e instanceof EventPeriodique) {
                 EventDate temp = e.dateDebut;
                 while (temp.estAvant(fin)) {
                     if (!temp.estAvant(debut)) {
                         result.ajouter(e);
                         break;
                     }
-                    temp = temp.ajouterJour(e.frequenceJours.getFrequence());
+                    temp = temp.ajouterJour(((EventPeriodique) e).frequenceJours.getFrequence());
                 }
             } else if (!e.dateDebut.estAvant(debut) && !e.dateDebut.estApres(fin)) {
                 result.ajouter(e);
@@ -36,7 +37,7 @@ public class CalendarManager {
         EventDate fin1 = e1.dateDebut.ajouterminutes(e1.dureeMinutes.getDuree());
         EventDate fin2 = e2.dateDebut.ajouterminutes(e2.dureeMinutes.getDuree());
 
-        if (e1.type.equals("PERIODIQUE") || e2.type.equals("PERIODIQUE")) {
+        if (e1 instanceof EventPeriodique || e2 instanceof EventPeriodique) {
             return false; // Simplification abusive
         }
 
