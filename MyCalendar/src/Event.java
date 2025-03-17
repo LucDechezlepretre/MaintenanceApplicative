@@ -6,7 +6,7 @@ public class Event {
     public EventProprietaire proprietaire;
     public LocalDateTime dateDebut;
     public EventDuree dureeMinutes;
-    public String lieu; // utilisé seulement pour REUNION
+    public EventLieu lieu; // utilisé seulement pour REUNION
     public String participants; // séparés par virgules (pour REUNION uniquement)
     public int frequenceJours; // uniquement pour PERIODIQUE
 
@@ -17,7 +17,7 @@ public class Event {
         this.proprietaire = new EventProprietaire(proprietaire);
         this.dateDebut = dateDebut;
         this.dureeMinutes = new EventDuree(dureeMinutes);
-        this.lieu = lieu;
+        this.lieu = new EventLieu(lieu);
         this.participants = participants;
         this.frequenceJours = frequenceJours;
     }
