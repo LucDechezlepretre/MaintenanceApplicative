@@ -1,6 +1,4 @@
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CalendarManager {
     public Evements events;
@@ -9,25 +7,25 @@ public class CalendarManager {
         this.events = new Evements();
     }
 
-    public void ajouterEvent(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
+    public void ajouterEvent(String type, String title, String proprietaire, int annee, int mois, int jour, int heure, int minute, int dureeMinutes,
                              String lieu, EventParticipants participants, int frequenceJours) {
-        Event e = new Event(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
+        Event e = new Event(type, title, proprietaire, annee, mois, jour, heure, minute, dureeMinutes, lieu, participants, frequenceJours);
         events.ajouter(e);
     }
 
-    public Evements eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+    public Evements eventsDansPeriode(EventDate debut, EventDate fin) {
         Evements result = new Evements();
         for (Event e : events.getEventsList()) {
             if (e.type.equals("PERIODIQUE")) {
-                LocalDateTime temp = e.dateDebut;
-                while (temp.isBefore(fin)) {
-                    if (!temp.isBefore(debut)) {
+                EventDate temp = e.dateDebut;
+                while (temp.estAvant(fin)) {
+                    if (!temp.estAvant(debut)) {
                         result.ajouter(e);
                         break;
                     }
-                    temp = temp.plusDays(e.frequenceJours.getFrequence());
+                    temp = temp.ajouterJour(e.frequenceJours.getFrequence());
                 }
-            } else if (!e.dateDebut.isBefore(debut) && !e.dateDebut.isAfter(fin)) {
+            } else if (!e.dateDebut.estAvant(debut) && !e.dateDebut.estApres(fin)) {
                 result.ajouter(e);
             }
         }
@@ -35,14 +33,14 @@ public class CalendarManager {
     }
 
     public boolean conflit(Event e1, Event e2) {
-        LocalDateTime fin1 = e1.dateDebut.plusMinutes(e1.dureeMinutes.getDuree());
-        LocalDateTime fin2 = e2.dateDebut.plusMinutes(e2.dureeMinutes.getDuree());
+        EventDate fin1 = e1.dateDebut.ajouterminutes(e1.dureeMinutes.getDuree());
+        EventDate fin2 = e2.dateDebut.ajouterminutes(e2.dureeMinutes.getDuree());
 
         if (e1.type.equals("PERIODIQUE") || e2.type.equals("PERIODIQUE")) {
             return false; // Simplification abusive
         }
 
-        if (e1.dateDebut.isBefore(fin2) && fin1.isAfter(e2.dateDebut)) {
+        if (e1.dateDebut.estAvant(fin2) && fin1.estApres(e2.dateDebut)) {
             return true;
         }
         return false;

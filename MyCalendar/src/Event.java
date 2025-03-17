@@ -4,18 +4,18 @@ public class Event {
     public EventType type; // "RDV_PERSONNEL", "REUNION", "PERIODIQUE"
     public EventTitle title;
     public EventProprietaire proprietaire;
-    public LocalDateTime dateDebut;
+    public EventDate dateDebut;
     public EventDuree dureeMinutes;
     public EventLieu lieu; // utilisé seulement pour REUNION
     public EventParticipants participants; // séparés par virgules (pour REUNION uniquement)
     public EventFrequenceJours frequenceJours; // uniquement pour PERIODIQUE
 
-    public Event(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
+    public Event(String type, String title, String proprietaire, int annee, int mois, int jour, int heure, int minute, int dureeMinutes,
                  String lieu, EventParticipants participants, int frequenceJours) {
         this.type = new EventType(type);
         this.title = new EventTitle(title);
         this.proprietaire = new EventProprietaire(proprietaire);
-        this.dateDebut = dateDebut;
+        this.dateDebut = new EventDate(annee, mois, jour, heure, minute);
         this.dureeMinutes = new EventDuree(dureeMinutes);
         this.lieu = new EventLieu(lieu);
         this.participants = participants;
