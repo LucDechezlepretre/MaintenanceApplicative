@@ -1,4 +1,4 @@
-public class EventDuree {
+public final class EventDuree {
     private int duree;
 
     public EventDuree(int duree) {

@@ -1,4 +1,4 @@
-public class EventTitle {
+public final class EventTitle {
     private String title;
 
     public EventTitle(String title) {

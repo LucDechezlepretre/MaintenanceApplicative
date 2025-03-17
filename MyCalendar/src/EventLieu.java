@@ -1,4 +1,4 @@
-public class EventLieu {
+public final class EventLieu {
     private String lieu;
 
     public EventLieu(String lieu) {

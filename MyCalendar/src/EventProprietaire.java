@@ -1,4 +1,4 @@
-public class EventProprietaire {
+public final class EventProprietaire {
     private String prop;
 
     public EventProprietaire(String p) {
