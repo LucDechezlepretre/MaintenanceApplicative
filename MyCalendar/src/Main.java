@@ -176,7 +176,7 @@ public class Main {
 
                         calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
                                 LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree,
-                                "", "", 0);
+                                "", new EventParticipants(), 0);
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -200,14 +200,17 @@ public class Main {
                         System.out.println("Lieu :");
                         String lieu = scanner.nextLine();
                         
-                        String participants = utilisateur;
+                        EventParticipants participants = new EventParticipants();
+                        participants.ajouterParticipant(new Participant(utilisateur));
                         
                         boolean encore = true;
                         System.out.println("Ajouter un participant ? (oui / non)");
                         while (scanner.nextLine().equals("oui"))
                         {
                             System.out.print("Participants : " + participants);
-                            participants += ", " + scanner.nextLine();
+                            Participant p = new Participant(scanner.nextLine());
+                            participants.ajouterParticipant(p);
+
                         }
 
                         calendar.ajouterEvent("REUNION", titre2, utilisateur,
@@ -236,7 +239,7 @@ public class Main {
 
                         calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur,
                                 LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0,
-                                "", "", frequence);
+                                "", new EventParticipants(), frequence);
 
                         System.out.println("Événement ajouté.");
                         break;

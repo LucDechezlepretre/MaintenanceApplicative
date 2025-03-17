@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Evements {
+public class Evements{
     private List<Event> eventsList;
 
     public Evements() {
