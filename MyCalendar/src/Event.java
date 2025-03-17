@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 
 public class Event {
-    public String type; // "RDV_PERSONNEL", "REUNION", "PERIODIQUE"
+    public EventType type; // "RDV_PERSONNEL", "REUNION", "PERIODIQUE"
     public String title;
     public String proprietaire;
     public LocalDateTime dateDebut;
@@ -12,7 +12,7 @@ public class Event {
 
     public Event(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
                  String lieu, String participants, int frequenceJours) {
-        this.type = type;
+        this.type = new EventType(type);
         this.title = title;
         this.proprietaire = proprietaire;
         this.dateDebut = dateDebut;
@@ -24,11 +24,11 @@ public class Event {
 
     public String description() {
         String desc = "";
-        if (type.equals("RDV_PERSONNEL")) {
+        if (type.egal(new EventType("RDV_PERSONNEL"))) {
             desc = "RDV : " + title + " à " + dateDebut.toString();
-        } else if (type.equals("REUNION")) {
+        } else if (type.egal(new EventType("REUNION"))) {
             desc = "Réunion : " + title + " à " + lieu + " avec " + participants;
-        } else if (type.equals("PERIODIQUE")) {
+        } else if (type.egal(new EventType("PERIODIQUE"))) {
             desc = "Événement périodique : " + title + " tous les " + frequenceJours + " jours";
         }
         return desc;
