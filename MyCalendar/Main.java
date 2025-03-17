@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        
         CalendarManager calendar = new CalendarManager();
         Scanner scanner = new Scanner(System.in);
         String utilisateur = null;
