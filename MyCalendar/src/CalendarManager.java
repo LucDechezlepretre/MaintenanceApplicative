@@ -3,32 +3,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarManager {
-    public List<Event> events;
+    public Evements events;
 
     public CalendarManager() {
-        this.events = new ArrayList<>();
+        this.events = new Evements();
     }
 
     public void ajouterEvent(String type, String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
                              String lieu, String participants, int frequenceJours) {
         Event e = new Event(type, title, proprietaire, dateDebut, dureeMinutes, lieu, participants, frequenceJours);
-        events.add(e);
+        events.ajouter(e);
     }
 
-    public List<Event> eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
-        List<Event> result = new ArrayList<>();
-        for (Event e : events) {
+    public Evements eventsDansPeriode(LocalDateTime debut, LocalDateTime fin) {
+        Evements result = new Evements();
+        for (Event e : events.getEventsList()) {
             if (e.type.equals("PERIODIQUE")) {
                 LocalDateTime temp = e.dateDebut;
                 while (temp.isBefore(fin)) {
                     if (!temp.isBefore(debut)) {
-                        result.add(e);
+                        result.ajouter(e);
                         break;
                     }
                     temp = temp.plusDays(e.frequenceJours);
                 }
             } else if (!e.dateDebut.isBefore(debut) && !e.dateDebut.isAfter(fin)) {
-                result.add(e);
+                result.ajouter(e);
             }
         }
         return result;
@@ -49,7 +49,7 @@ public class CalendarManager {
     }
 
     public void afficherEvenements() {
-        for (Event e : events) {
+        for (Event e : events.getEventsList()) {
             System.out.println(e.description());
         }
     }

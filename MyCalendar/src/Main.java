@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        
         CalendarManager calendar = new CalendarManager();
         Scanner scanner = new Scanner(System.in);
         String utilisateur = null;
@@ -123,7 +122,7 @@ public class Main {
                                 LocalDateTime debutMois = LocalDateTime.of(anneeMois, mois, 1, 0, 0);
                                 LocalDateTime finMois = debutMois.plusMonths(1).minusSeconds(1);
 
-                                afficherListe(calendar.eventsDansPeriode(debutMois, finMois));
+                                afficherListe(calendar.eventsDansPeriode(debutMois, finMois).getEventsList());
                                 break;
 
                             case "3":
@@ -139,7 +138,7 @@ public class Main {
                                         .withHour(0).withMinute(0);
                                 LocalDateTime finSemaine = debutSemaine.plusDays(7).minusSeconds(1);
 
-                                afficherListe(calendar.eventsDansPeriode(debutSemaine, finSemaine));
+                                afficherListe(calendar.eventsDansPeriode(debutSemaine, finSemaine).getEventsList());
                                 break;
 
                             case "4":
@@ -153,7 +152,7 @@ public class Main {
                                 LocalDateTime debutJour = LocalDateTime.of(anneeJour, moisJour, jour, 0, 0);
                                 LocalDateTime finJour = debutJour.plusDays(1).minusSeconds(1);
 
-                                afficherListe(calendar.eventsDansPeriode(debutJour, finJour));
+                                afficherListe(calendar.eventsDansPeriode(debutJour, finJour).getEventsList());
                                 break;
                         }
                         break;
