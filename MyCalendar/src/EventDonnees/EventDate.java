@@ -19,22 +19,18 @@ public final class EventDate{
     }
 
     public EventDate ajouterMois(int nbMois){
-        this.date = this.date.plusMonths(nbMois);
-        return this;
+        return new EventDate(this.date.plusMonths(nbMois));
     }
     public EventDate ajouterJour(int jours){
-        this.date = this.date.plusDays(jours);
-        return this;
+        return new EventDate(this.date.plusDays(jours));
     }
 
     public EventDate ajouterminutes(int minutes){
-        this.date = this.date.plusDays(minutes);
-        return this;
+        return new EventDate(this.date.plusMinutes(minutes));
     }
 
     public EventDate moinsSecondes(int secondes){
-        this.date = this.date.minusSeconds(secondes);
-        return this;
+        return new EventDate(this.date.minusSeconds(secondes));
     }
 
     public boolean estAvant(EventDate fin) {
@@ -52,5 +48,8 @@ public final class EventDate{
     @Override
     public String toString() {
         return date.toString();
+    }
+    public EventDate clone(){
+        return new EventDate(this.date);
     }
 }

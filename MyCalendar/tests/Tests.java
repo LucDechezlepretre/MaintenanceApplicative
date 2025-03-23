@@ -1,3 +1,4 @@
+import Events.Event;
 import Events.EventPersonnalise;
 import Events.EventRdv;
 import calendar.CalendarManager;
@@ -23,8 +24,11 @@ public class Tests {
     @Test
     public void testChevauchementHoraires(){
         Utilisateur user = new Utilisateur("luc", "123");
-        this.cm.ajouterEvent(new EventRdv("Event1", user, 2025, 1, 1, 10, 30, 90));
-        this.cm.ajouterEvent(new EventRdv("Event2", user, 2025, 1, 1, 11, 0, 30));
+        Event e = new EventRdv("Event1", user, 2025, 2, 1, 10, 30, 90);
+        Event e2 = new EventRdv("Event2", user, 2025, 2, 1, 11, 0, 30);
+        this.cm.ajouterEvent(e);
+        this.cm.ajouterEvent(e2);
+        this.cm.afficherEvenements();
         assertEquals(1, this.cm.events.getNombreEvent(), "Les deux évènements se chevauchent ils ne devrait pas y avoir 2 events dans le calendrier");
     }
 }

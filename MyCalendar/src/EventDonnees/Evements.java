@@ -1,6 +1,7 @@
 package EventDonnees;
 
 import Events.Event;
+import Events.EventPeriodique;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,9 @@ public class Evements{
     }
 
     public void ajouter(Event e){
-        this.eventsList.add(e);
+        if(chevaucheAucunEvent(e)){
+            this.eventsList.add(e);
+        }
     }
 
     public List<Event> getEventsList() {
@@ -32,5 +35,25 @@ public class Evements{
     }
     public int getNombreEvent(){
         return this.eventsList.size();
+    }
+
+    public boolean chevaucheAucunEvent(Event event){
+        for(Event e : this.eventsList){
+            if(conflit(event, e)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean conflit(Event e1, Event e2) {
+        EventDate fin1 = e1.dateDebut.ajouterminutes(e1.dureeMinutes.getDuree());
+        EventDate fin2 = e2.dateDebut.ajouterminutes(e2.dureeMinutes.getDuree());
+
+        if (e1 instanceof EventPeriodique || e2 instanceof EventPeriodique) {
+            return false; // Simplification abusive
+        }
+        //System.out.println(e1.dateDebut.estAvant(fin2)+" et "+fin1.estApres(e2.dateDebut)+" "+(e1.dateDebut.estAvant(fin2) && fin1.estApres(e2.dateDebut)));
+        return e1.dateDebut.estAvant(fin2) && fin1.estApres(e2.dateDebut);
     }
 }

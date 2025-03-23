@@ -34,20 +34,6 @@ public class CalendarManager {
         return result;
     }
 
-    public boolean conflit(Event e1, Event e2) {
-        EventDate fin1 = e1.dateDebut.ajouterminutes(e1.dureeMinutes.getDuree());
-        EventDate fin2 = e2.dateDebut.ajouterminutes(e2.dureeMinutes.getDuree());
-
-        if (e1 instanceof EventPeriodique || e2 instanceof EventPeriodique) {
-            return false; // Simplification abusive
-        }
-
-        if (e1.dateDebut.estAvant(fin2) && fin1.estApres(e2.dateDebut)) {
-            return true;
-        }
-        return false;
-    }
-
     public void afficherEvenements() {
         for (Event e : events.getEventsList()) {
             System.out.println(e.description());
