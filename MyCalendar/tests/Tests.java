@@ -16,6 +16,6 @@ public class Tests {
     public void testEvenementsPersonnalise(){
         this.cm.ajouterEvent(new EventPersonnalise("Anniversaire", "Anniversaire de julie", new Utilisateur("Luc", "123"),
                 2025, 1, 2, 15, 20, 90));
-        assertEquals("Anniversaire de julie le 2025-01-02T15:20:00.000 pendant 90 minutes", this.cm.events.getEventsList().getFirst().toString());
+        assertEquals("Anniversaire de julie le 2025-01-02T15:20 pendant 90 minutes", this.cm.events.getEventsList().getFirst().description());
     }
 }

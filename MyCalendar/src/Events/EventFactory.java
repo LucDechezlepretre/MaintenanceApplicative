@@ -20,4 +20,9 @@ public class EventFactory {
     public static EventPeriodique createPeriodique(String title, Utilisateur proprietaire, int annee, int mois, int jour, int heure, int minute, int dureeMinutes, int frequenceJours) {
         return new EventPeriodique(title, proprietaire, annee, mois, jour, heure, minute, dureeMinutes, frequenceJours);
     }
+
+    public static EventPersonnalise createPerso(String type, String title, Utilisateur proprietaire, int annee, int mois, int jour, int heure, int minute, int dureeMinutes) {
+        return new EventPersonnalise(type, title, proprietaire, annee, mois, jour, heure, minute, dureeMinutes);
+    }
+
 }

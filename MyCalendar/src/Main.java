@@ -23,6 +23,7 @@ public class Main {
         actions.add(new AjouterRdvPerso(calendar, scanner, utilisateur));
         actions.add(new AjouterReunion(calendar, scanner, utilisateur));
         actions.add(new AjouterEvenementPeriodique(calendar, scanner, utilisateur));
+        actions.add(new AjouterEvenementPerso(calendar, scanner, utilisateur));
         actions.add(new Deconnexion(calendar, scanner, utilisateur));
 
         List<Action> actionsConnexion = new ArrayList<>();
@@ -58,7 +59,8 @@ public class Main {
                 System.out.println("2 - Ajouter un rendez-vous perso");
                 System.out.println("3 - Ajouter une réunion");
                 System.out.println("4 - Ajouter un évènement périodique");
-                System.out.println("5 - Se déconnecter");
+                System.out.println("5 - Ajouter un évènement personnalisé");
+                System.out.println("6 - Se déconnecter");
                 System.out.print("Votre choix : ");
 
                 String choix = scanner.nextLine();

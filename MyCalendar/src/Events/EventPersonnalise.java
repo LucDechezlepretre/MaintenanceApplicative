@@ -12,6 +12,6 @@ public class EventPersonnalise extends Event {
 
     @Override
     public String description() {
-        return "";
+        return this.title+" le "+this.dateDebut+" pendant "+this.dureeMinutes+" minutes";
     }
 }
