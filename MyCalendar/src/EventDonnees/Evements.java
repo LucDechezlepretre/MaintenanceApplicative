@@ -30,4 +30,7 @@ public class Evements{
             }
         }
     }
+    public int getNombreEvent(){
+        return this.eventsList.size();
+    }
 }
