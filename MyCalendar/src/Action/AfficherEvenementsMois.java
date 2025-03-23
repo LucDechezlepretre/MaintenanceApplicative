@@ -25,6 +25,6 @@ public class AfficherEvenementsMois extends ActionUtilisateur {
         EventDate finMois = debutMois.ajouterMois(1);
         finMois = finMois.moinsSecondes(1);
 
-        afficherListe(cm.eventsDansPeriode(debutMois, finMois).getEventsList());
+        afficherListe(cm.eventsDansPeriode(debutMois, finMois));
     }
 }

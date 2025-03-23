@@ -26,6 +26,6 @@ public class AfficherEvenementsJour extends ActionUtilisateur {
         EventDate finJour = debutJour.ajouterJour(1);
         finJour = finJour.moinsSecondes(1);
 
-        afficherListe(cm.eventsDansPeriode(debutJour, finJour).getEventsList());
+        afficherListe(cm.eventsDansPeriode(debutJour, finJour));
     }
 }

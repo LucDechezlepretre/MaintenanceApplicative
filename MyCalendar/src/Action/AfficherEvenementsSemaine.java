@@ -32,7 +32,7 @@ public class AfficherEvenementsSemaine extends ActionUtilisateur {
         EventDate finSemaine = debutSemaine.ajouterJour(7);
         finSemaine = finSemaine.moinsSecondes(1);
 
-        afficherListe(cm.eventsDansPeriode(debutSemaine, finSemaine).getEventsList());
+        afficherListe(cm.eventsDansPeriode(debutSemaine, finSemaine));
 
     }
 }

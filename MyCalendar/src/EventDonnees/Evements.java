@@ -19,4 +19,15 @@ public class Evements{
     public List<Event> getEventsList() {
         return eventsList;
     }
+
+    public void afficher() {
+        if (eventsList.isEmpty()) {
+            System.out.println("Aucun événement trouvé pour cette période.");
+        } else {
+            System.out.println("Événements trouvés : ");
+            for (Event e : eventsList) {
+                System.out.println("- " + e.description());
+            }
+        }
+    }
 }

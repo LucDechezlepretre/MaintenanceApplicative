@@ -1,9 +1,6 @@
 package Events;
 
-import EventDonnees.EventDate;
-import EventDonnees.EventDuree;
-import EventDonnees.EventProprietaire;
-import EventDonnees.EventTitle;
+import EventDonnees.*;
 import utilisateur.Utilisateur;
 
 import java.util.List;
@@ -23,14 +20,7 @@ public abstract class Event {
 
     public abstract String description();
 
-    public static void afficherListe(List<Event> evenements) {
-        if (evenements.isEmpty()) {
-            System.out.println("Aucun événement trouvé pour cette période.");
-        } else {
-            System.out.println("Événements trouvés : ");
-            for (Event e : evenements) {
-                System.out.println("- " + e.description());
-            }
-        }
+    public static void afficherListe(Evements evenements) {
+        evenements.afficher();
     }
 }
