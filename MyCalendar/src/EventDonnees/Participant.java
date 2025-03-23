@@ -11,6 +11,11 @@ public class Participant {
         }
     }
 
+    @Override
+    public String toString() {
+        return nom;
+    }
+
     public String getNom() {
         return nom;
     }

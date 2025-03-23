@@ -19,6 +19,7 @@ public class EventParticipants {
         StringBuilder sb = new StringBuilder();
         for(Participant p : this.participantList){
             sb.append(p.toString());
+            sb.append(" ");
         }
         return sb.toString();
     }

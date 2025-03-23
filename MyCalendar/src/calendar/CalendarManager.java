@@ -1,7 +1,8 @@
+package calendar;
+
 import EventDonnees.Evements;
 import EventDonnees.EventDate;
 import Events.EventPeriodique;
-import EventDonnees.*;
 import Events.*;
 public class CalendarManager {
     public Evements events;

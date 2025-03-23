@@ -10,4 +10,9 @@ public final class EventLieu {
             throw new RuntimeException("Erreur dans le nom du lieu");
         }
     }
+
+    @Override
+    public String toString() {
+        return lieu;
+    }
 }

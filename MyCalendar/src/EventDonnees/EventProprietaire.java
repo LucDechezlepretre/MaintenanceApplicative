@@ -9,6 +9,11 @@ public final class EventProprietaire {
         }
     }
 
+    @Override
+    public String toString() {
+        return prop;
+    }
+
     public String getProprietaire() {
         return prop;
     }

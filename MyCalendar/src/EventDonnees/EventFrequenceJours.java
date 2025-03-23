@@ -11,6 +11,11 @@ public final class EventFrequenceJours {
         }
     }
 
+    @Override
+    public String toString() {
+        return frequenceJours+"";
+    }
+
     public int getFrequence() {
         return frequenceJours;
     }
