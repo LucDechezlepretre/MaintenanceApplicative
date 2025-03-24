@@ -48,8 +48,5 @@ public class AjouterReunion extends ActionUtilisateur {
 
         cm.ajouterEvent(EventFactory.createReunion(titre2, utilisateur, annee2, moisRdv2, jourRdv2, heure2, minute2, duree2,
                 lieu, participants));
-
-        System.out.println("Événement ajouté.");
-
     }
 }

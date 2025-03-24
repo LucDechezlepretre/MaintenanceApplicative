@@ -31,7 +31,5 @@ public class AjouterRdvPerso extends ActionUtilisateur {
 
         cm.ajouterEvent(EventFactory.createRdv(titre, utilisateur,
                 annee, moisRdv, jourRdv, heure, minute, duree));
-
-        System.out.println("Événement ajouté.");
     }
 }

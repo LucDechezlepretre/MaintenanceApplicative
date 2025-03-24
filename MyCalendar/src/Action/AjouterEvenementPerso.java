@@ -31,6 +31,5 @@ public class AjouterEvenementPerso extends ActionUtilisateur {
         int duree = Integer.parseInt(sc.nextLine());
 
         this.cm.ajouterEvent(EventFactory.createPerso(type, titre, utilisateur,annee, mois, jour, heure, minute, duree));
-        System.out.println("Événement ajouté.");
     }
 }

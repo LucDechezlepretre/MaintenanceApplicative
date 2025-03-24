@@ -16,6 +16,9 @@ public class Evements{
     public void ajouter(Event e){
         if(chevaucheAucunEvent(e)){
             this.eventsList.add(e);
+            System.out.println("Événement ajouté.");
+        }else{
+            System.out.println("L'événement n'as pas été ajouté à cause du chevauchement horaire");
         }
     }
 

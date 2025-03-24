@@ -31,8 +31,5 @@ public class AjouterEvenementPeriodique extends ActionUtilisateur {
 
         cm.ajouterEvent(EventFactory.createPeriodique(titre3, utilisateur, annee3, moisRdv3, jourRdv3, heure3, minute3, 0,
                 frequence));
-
-        System.out.println("Événement ajouté.");
-
     }
 }
