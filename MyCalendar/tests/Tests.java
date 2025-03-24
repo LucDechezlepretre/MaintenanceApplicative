@@ -31,4 +31,11 @@ public class Tests {
         this.cm.afficherEvenements();
         assertEquals(1, this.cm.events.getNombreEvent(), "Les deux évènements se chevauchent ils ne devrait pas y avoir 2 events dans le calendrier");
     }
+
+    @Test
+    public void testSuppressionAvecID(){
+        this.cm.ajouterEvent(new EventRdv("Test", new Utilisateur("luc", "123"), 2025, 1, 1, 1, 1, 10));
+        this.cm.supprimer(1);
+        assertEquals(0, this.cm.events.getNombreEvent(), "L'évènement devrait être supprimé");
+    }
 }

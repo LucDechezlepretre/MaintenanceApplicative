@@ -39,4 +39,7 @@ public class CalendarManager {
             System.out.println(e.description());
         }
     }
+
+    public void supprimer(int i) {
+    }
 }
