@@ -41,5 +41,6 @@ public class CalendarManager {
     }
 
     public void supprimer(int i) {
+        this.events.supprimer(i);
     }
 }

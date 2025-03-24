@@ -38,4 +38,10 @@ public class Tests {
         this.cm.supprimer(1);
         assertEquals(0, this.cm.events.getNombreEvent(), "L'évènement devrait être supprimé");
     }
+    @Test
+    public void testMauvaiseSuppression(){
+        this.cm.ajouterEvent(new EventRdv("Test", new Utilisateur("luc", "123"), 2025, 1, 1, 1, 1, 10));
+        this.cm.supprimer(2);
+        assertEquals(1, this.cm.events.getNombreEvent(), "L'évènement ne devrait pas être supprimé");
+    }
 }
